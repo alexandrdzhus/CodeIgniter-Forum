@@ -1,0 +1,144 @@
+/*Html*/
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+}
+.wrap {
+  display: table;
+  height: 93%;
+}
+/*.content {
+    display: table-row;
+    height: 100%;
+}*/
+.content table{
+    border: 1px solid #e7e7e7;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+.content table tr:first-child{
+    background-color: #f8f8f8;
+}
+.content table tr:nth-child(2){
+    padding: 10px;
+}
+
+.navbar-default {
+    background-color: #f8f8f8;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.wrap {
+  width: 100%;
+  padding:10px;
+  background-color: #FFF;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+a.navbar-brand {
+  padding: 0px;
+  padding-left: 15px;
+  overflow: hidden;
+}
+.navbar-brand img {
+  height: 100%;
+}
+.navbar-btn {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+/*.page{*/
+  /*text-align: center;*/
+  /*color: red;*/
+/*}*/
+/*.page a, .page strong{*/
+  /*border: 1px solid gray;*/
+  /*margin: 4px;*/
+  /*padding: 4px;*/
+  /*border-radius: 4px;*/
+  /*background: lightblue;*/
+  /*text-decoration: none;*/
+/*}*/
+/*.page a{*/
+  /*color: #000;*/
+/*}*/
+/*.page a:hover{*/
+  /*background-color: #7EA9B7;*/
+/*}*/
+.form-group label{
+  min-width: 150px;
+  text-align: right;
+  margin-right: 20px;
+}
+#send{
+  padding: 10px;
+  font-size: medium;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  margin: 15px;
+}
+#send:hover{
+  background-color: #0a6ebd;
+}
+.section{
+ 
+}
+.control-label{
+  text-align: right;
+}
+.btn {
+  margin-left: 7px;
+}
+#refresh{
+  margin: 15px;
+}
+.searchXtable{
+  margin-top: 25px;
+}
+#count_row{
+  margin-top: 20px;
+}
+
+.fon{
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.fon:after{
+  display: block;
+  content: '';
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding-top: -5px;
+  padding-right: -5px;
+  margin: auto;
+  overflow: hidden;
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid blue;
+  border-bottom: 10px solid blue;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin .5s linear infinite;
+  animation: spin .5s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+footer{
+  text-align: center;
+}
