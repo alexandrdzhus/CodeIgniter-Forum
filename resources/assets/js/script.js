@@ -7,9 +7,9 @@ $(function () {
     })
 
     var xtable = new Xtable('#articles_body');
+    var xtable = new Xtable('#users_body');
 
 });
-
 
 //Clear modal window
 function clear_modal_data() {
@@ -74,7 +74,6 @@ function init_add_section_click() {
 // Edit section first
 function init_edit_button_click() {
     $('#articles_body').off('click', '.btn-update').on('click', '.btn-update', function () {
-        // $('.btn-update').click(function () {
         var article_id = $(this).data("articleId");
         clear_modal_data();
 
@@ -94,10 +93,31 @@ function init_edit_button_click() {
     });
 }
 
+//Edit user first
+function init_edit_user_button_click() {
+    $('#users_body').off('click', '.btn-update').on('click', '.btn-update', function () {
+        var user_id = $(this).data("userId");
+        clear_modal_data();
+
+        var url = '/users/get_user';
+        Ajax_send({
+            url: url,
+            data: {user_id: user_id},
+            success: function (result) {
+                $('#userModal').modal('show');
+                $('.modal-content').html(result.result.html);
+                  init_send_changes_edit_user_button_click();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log();
+            }
+        })
+    });
+}
+
 // Delete Section First
 function init_show_modal_delete_buttons_click() {
     $('#articles_body').off('click', '.btn-del').on('click', '.btn-del', function () {
-//        $('.btn-del').click(function () {
         var user_id = $(this).data("articleId");
         clear_modal_data();
         $('#userModal').modal('show');
@@ -109,17 +129,57 @@ function init_show_modal_delete_buttons_click() {
     })
 }
 
+// Delete User First
+function init_show_modal_delete_user_buttons_click() {
+    $('#users_body').off('click', '.btn-del').on('click', '.btn-del', function () {
+        var user_id = $(this).data("userId");
+        clear_modal_data();
+        $('#userModal').modal('show');
+        $('.modal-title').html('Delete post');
+        $('.modal-body').html("Are you sure you want to delete this?");
+        $('#action').html('Delete');
+        $('#userModal').data('data', {user_id: user_id});
+        init_delete_user_button_click();
+    })
+}
+
 function init_events() {
     init_add_section_click();
     init_show_modal_delete_buttons_click();
+    init_show_modal_delete_user_buttons_click();
     init_edit_button_click();
+    init_edit_user_button_click();
+    init_load_files_click();
+
 }
 // Delete Section Two
 function init_delete_button_click() {
     $('#action').off('click').on('click', function () {
-        // alert('delete');
+
         var user_id = $('#userModal').data('data').user_id;
         var url = '/articles/del_article';
+
+        Ajax_send({
+            url: url,
+            data: {user_id: user_id},
+            success: function (result) {
+                $('.fon').css({'display': 'none'});
+                $('#userModal').modal('hide');
+                location.reload(true);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.fon').css({'display': 'none'});
+            }
+        })
+    });
+}
+
+// Delete User Two
+function init_delete_user_button_click() {
+    $('#action').off('click').on('click', function () {
+
+        var user_id = $('#userModal').data('data').user_id;
+        var url = '/users/del_user';
 
         Ajax_send({
             url: url,
@@ -188,6 +248,48 @@ function init_send_changes_edit_button_click() {
     })
 }
 
+// Edit user two / Send changes
+function init_send_changes_edit_user_button_click() {
+    $('#action').off('click').on('click', function () {
+        var newdata3 = $('form').serialize();
+        var url = '/users/edit_user';
+
+        Ajax_send({
+            url: url,
+            data: newdata3,
+            success: function (result) {
+                $('#userModal').modal('hide');
+                location.reload(true);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.fon').css({'display': 'none'});
+                console.log();
+            }
+        })
+    })
+}
+
+// Upload files
+function init_load_files_click() {
+    $('#articles_body').on('afterpost', function() {
+        $('.fileupload').fileupload({
+            dataType: 'json',
+            done: function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    $('<p/>').text(file.name).appendTo(document.body);
+                });
+            }
+            // progressall: function (e, data) {
+            //     var progress = parseInt(data.loaded / data.total * 100, 10);
+            //     $('.progress .bar').css(
+            //         'width',
+            //         progress + '%'
+            //     );
+            // }
+        });
+    });
+};
+
 
 function Xtable(target) {
     if (!$(target).length) {
@@ -249,6 +351,10 @@ Xtable.prototype.post = function (data) {
         data: data,
         success: function (result) {
             $(that.target).html(result.html);
+            $(that.target).trigger("afterpost");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR, textStatus, errorThrown);
         }
     });
 };

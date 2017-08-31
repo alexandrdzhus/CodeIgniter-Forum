@@ -10,10 +10,43 @@
                         <legend>Register</legend>
 
 
-                        <div class="form-group <?php echo (form_error('username') == null) ? '' : 'has-error'  ?>">
-                            <label for="username" class="col-md-2">Name</label>
+                    <div class="form-group <?php echo (form_error('firstname') == null) ? '' : 'has-error'  ?>">
+                        <label for="firstname" class="col-md-2">First name</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First name" value="<?php echo set_value('firstname'); ?>">
+                            <?php echo form_error('firstname'); ?>
+                        </div>
+                    </div>
+                    <div class="form-group <?php echo (form_error('lastname') == null) ? '' : 'has-error'  ?>">
+                        <label for="lastname" class="col-md-2">Last name</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Last name" value="<?php echo set_value('lastname'); ?>">
+                            <?php echo form_error('lastname'); ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group <?php echo (form_error('sex') == null) ? '' : 'has-error'  ?>">
+                        <label for="sex" class="col-md-2">SEX</label>
+                        <div class="col-md-8">
+                            <select name="sex" id="sex" class="form-control">
+                                <option value="m">Male</option>
+                                <option value="f">Female</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group <?php echo (form_error('year_of_birth') == null) ? '' : 'has-error'  ?>">
+                        <label for="year_of_birth" class="col-md-2">Year of Birth</label>
+                        <div class="col-md-8">
+                            <input type="number" class="form-control" name="year_of_birth" id="year_of_birth" placeholder="Year of Birth" value="<?php echo set_value('year_of_birth'); ?>">
+                            <?php echo form_error('year_of_birth'); ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group <?php echo (form_error('username') == null) ? '' : 'has-error'  ?>">
+                            <label for="username" class="col-md-2">Nick name</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="username" id="username" placeholder="Name" value="<?php echo set_value('username'); ?>">
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Nick name" value="<?php echo set_value('username'); ?>">
                                 <?php echo form_error('username'); ?>
                             </div>
                         </div>    

@@ -99,6 +99,13 @@ a.navbar-brand {
 #count_row{
   margin-top: 20px;
 }
+.modal-upload{
+  padding: 15px;
+}
+.bar {
+  height: 18px;
+  background: green;
+}
 
 .fon{
   display: none;

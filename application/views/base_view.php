@@ -9,6 +9,12 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/assets/css/style.css">
+
+    <link rel="stylesheet" href="/resources/assets/css/jquery.fileupload.css">
+    <link rel="stylesheet" href="/resources/assets/css/jquery.fileupload-noscript.css ">
+    <link rel="stylesheet" href="/resources/assets/css/jquery.fileupload-ui.css ">
+    <link rel="stylesheet" href="/resources/assets/css/jquery.fileupload-ui-noscript.css ">
+
     <link rel="icon" href="<?=base_url()?>/favicon.png" type="image/png">
     <!-- Jquery scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,6 +22,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- My scripts-->
     <script src="/resources/assets/js/script.js"></script>
+
+    <script src="/resources/assets/js/vendor/jquery.ui.widget.js"></script>
+    <script src="/resources/assets/js/jquery.iframe-transport.js"></script>
+    <script src="/resources/assets/js/jquery.fileupload.js"></script>
+
 </head>
 <body>
 

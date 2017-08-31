@@ -71,7 +71,7 @@ class Articles extends Base_Controller
 
     function add_article()
     {
-
+        $this->load->library('upload');
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('title', 'Title', 'trim|required');
@@ -207,5 +207,30 @@ class Articles extends Base_Controller
             ],
         ];
         echo json_encode($result);
+    }
+
+    function do_upload()
+    {
+       // $new =
+        mkdir ('./resources/assets/img/articles_img/' );
+
+        $config['upload_path']          = './resources/assets/img/articles_img/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('files'))
+        {
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('upload_form', $error);
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success', $data);
+        }
+
+
+
+
     }
 }

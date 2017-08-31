@@ -5,9 +5,11 @@
         </div>
 
         <div class="panel-body">
-           
-            <div class="class-lg-4">
-                <p class="text-center text-primary">In developing... Please wait =)</p>
+
+            <div id="users_body" data-url="/users/pagination/" class="col-md-12">
+
+                <?php $this->view('users_body_view'); ?>
+
             </div>
         </div>
     </div>

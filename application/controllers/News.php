@@ -7,7 +7,7 @@ class News extends Base_Controller{
     {
         $this->load->model('news_model');
 
-        $data['content'] = '';
+        $data['content'] = [];
         $this->display('news_view', $data);
     }
 }
